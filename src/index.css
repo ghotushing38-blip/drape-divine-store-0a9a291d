@@ -165,11 +165,20 @@
   }
 
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+    transition: all 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   .hover-glow {
-    @apply transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)];
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
   }
 
   .shimmer {
@@ -179,29 +188,74 @@
 
   /* Premium Button Styles */
   .btn-hero {
-    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg shadow-elegant hover:shadow-gold transition-all duration-300 hover:scale-105;
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary-glow)));
+    color: hsl(var(--primary-foreground));
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1.125rem;
+    box-shadow: 0 10px 30px -10px hsl(345 70% 32% / 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-hero:hover {
+    box-shadow: 0 8px 25px -8px hsl(45 75% 52% / 0.4);
+    transform: scale(1.05);
   }
 
   .btn-gold {
-    @apply bg-gradient-to-r from-secondary to-secondary-glow text-secondary-foreground px-6 py-3 rounded-lg font-semibold shadow-gold hover:shadow-elegant transition-all duration-300 hover:scale-105;
+    background: linear-gradient(to right, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    color: hsl(var(--secondary-foreground));
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    box-shadow: 0 8px 25px -8px hsl(45 75% 52% / 0.4);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-gold:hover {
+    box-shadow: 0 10px 30px -10px hsl(345 70% 32% / 0.3);
+    transform: scale(1.05);
   }
 
   /* Product Card Styles */
   .product-card {
-    @apply bg-card rounded-xl overflow-hidden shadow-soft hover-lift hover-glow transition-all duration-300 cursor-pointer;
+    background: hsl(var(--card));
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px -4px hsl(345 20% 45% / 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
   }
 
   .product-image-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, hsl(var(--foreground) / 0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .product-image-overlay:hover {
+    opacity: 1;
   }
 
   /* Ethnic Decorative Elements */
   .border-ethnic {
-    @apply border-2 border-secondary/30 rounded-lg;
+    border: 2px solid hsl(var(--secondary) / 0.3);
+    border-radius: 0.5rem;
   }
 
   .divider-ethnic {
-    @apply h-1 w-24 bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto my-8;
+    height: 0.25rem;
+    width: 6rem;
+    background: linear-gradient(to right, transparent, hsl(var(--secondary)), transparent);
+    margin: 2rem auto;
   }
 }
 

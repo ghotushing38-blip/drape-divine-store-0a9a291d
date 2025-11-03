@@ -58,6 +58,11 @@ export default {
         sans: ['Poppins', 'sans-serif'],
         serif: ['Playfair Display', 'serif'],
       },
+      boxShadow: {
+        'elegant': '0 10px 30px -10px hsl(345 70% 32% / 0.3)',
+        'gold': '0 8px 25px -8px hsl(45 75% 52% / 0.4)',
+        'soft': '0 4px 20px -4px hsl(345 20% 45% / 0.15)',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
