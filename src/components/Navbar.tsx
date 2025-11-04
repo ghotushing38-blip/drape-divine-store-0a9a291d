@@ -9,10 +9,21 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [cartCount, setCartCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
   const location = useLocation();
 
-  const cartCount = parseInt(localStorage.getItem("cartCount") || "0");
-  const wishlistCount = parseInt(localStorage.getItem("wishlistCount") || "0");
+  useEffect(() => {
+    // Update counts on mount and storage changes
+    const updateCounts = () => {
+      setCartCount(parseInt(localStorage.getItem("cartCount") || "0"));
+      setWishlistCount(parseInt(localStorage.getItem("wishlistCount") || "0"));
+    };
+    
+    updateCounts();
+    window.addEventListener("storage", updateCounts);
+    return () => window.removeEventListener("storage", updateCounts);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -23,6 +34,18 @@ const Navbar = () => {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) setUser(JSON.parse(storedUser));
+    
+    const handleStorageChange = () => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      } else {
+        setUser(null);
+      }
+    };
+    
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   const handleLogout = () => {
@@ -125,31 +148,56 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-border animate-fade-in">
+            <div className="md:hidden py-4 border-t border-border animate-slide-in-right bg-card">
               <div className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-foreground/80 hover:text-primary transition-colors font-medium ${
-                      location.pathname === link.path ? "text-primary" : ""
+                    className={`px-4 py-2 text-lg font-medium rounded-lg transition-colors ${
+                      location.pathname === link.path 
+                        ? "bg-primary/10 text-primary" 
+                        : "text-foreground/80 hover:bg-muted hover:text-primary"
                     }`}
                   >
                     {link.name}
                   </Link>
                 ))}
-                {!user && (
-                  <Button
-                    onClick={() => {
-                      setIsLoginModalOpen(true);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="w-full bg-gradient-to-r from-primary to-primary-glow text-primary-foreground"
-                  >
-                    Login
-                  </Button>
-                )}
+                <div className="border-t border-border pt-4 px-4">
+                  <div className="flex gap-3 mb-4">
+                    <Link to="/wishlist" className="flex-1" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full">
+                        <Heart className="h-4 w-4 mr-2" />
+                        Wishlist ({wishlistCount})
+                      </Button>
+                    </Link>
+                    <Link to="/cart" className="flex-1" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full">
+                        <ShoppingCart className="h-4 w-4 mr-2" />
+                        Cart ({cartCount})
+                      </Button>
+                    </Link>
+                  </div>
+                  {user ? (
+                    <Link to="/account" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button className="w-full bg-gradient-to-r from-primary to-primary-glow text-primary-foreground">
+                        <User className="h-4 w-4 mr-2" />
+                        My Account
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      onClick={() => {
+                        setIsLoginModalOpen(true);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="w-full bg-gradient-to-r from-primary to-primary-glow text-primary-foreground"
+                    >
+                      Login / Sign Up
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           )}
