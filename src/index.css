@@ -8,60 +8,73 @@
 
 @layer base {
   :root {
-    /* Indian Cultural Color Palette - HSL only */
-    --background: 40 40% 96%; /* Cream background */
-    --foreground: 345 70% 20%; /* Deep maroon text */
+    /* Luxurious Indian Saree Color Palette - HSL only */
+    --background: 30 25% 97%; /* Soft ivory */
+    --foreground: 340 85% 15%; /* Deep wine */
 
     --card: 0 0% 100%;
-    --card-foreground: 345 70% 20%;
+    --card-foreground: 340 85% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 345 70% 20%;
+    --popover-foreground: 340 85% 15%;
 
-    /* Maroon Primary */
-    --primary: 345 70% 32%; /* Rich Maroon #8B1538 */
-    --primary-foreground: 40 40% 96%;
-    --primary-glow: 345 70% 45%;
+    /* Wine Red Primary */
+    --primary: 340 85% 28%; /* Deep Wine #7A0E2E */
+    --primary-foreground: 30 25% 97%;
+    --primary-glow: 340 75% 42%;
+    --primary-dark: 340 90% 18%;
 
-    /* Gold Accent */
-    --secondary: 45 75% 52%; /* Royal Gold #D4AF37 */
-    --secondary-foreground: 345 70% 20%;
-    --secondary-glow: 45 85% 65%;
+    /* Rose Gold Accent */
+    --secondary: 15 65% 65%; /* Rose Gold #E6A88F */
+    --secondary-foreground: 340 85% 15%;
+    --secondary-glow: 15 75% 75%;
+    --secondary-dark: 15 60% 55%;
 
-    /* Deep Green */
-    --accent: 155 40% 25%;
-    --accent-foreground: 40 40% 96%;
+    /* Emerald Green */
+    --accent: 165 55% 35%;
+    --accent-foreground: 30 25% 97%;
+    --accent-glow: 165 50% 50%;
 
-    /* Royal Blue */
-    --royal: 220 70% 40%;
+    /* Royal Purple */
+    --royal: 270 60% 45%;
     --royal-foreground: 0 0% 100%;
+    --royal-glow: 270 50% 60%;
 
-    --muted: 40 30% 90%;
-    --muted-foreground: 345 20% 45%;
+    /* Champagne */
+    --champagne: 45 40% 85%;
+    --champagne-dark: 45 35% 75%;
+
+    --muted: 30 20% 92%;
+    --muted-foreground: 340 25% 45%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 40 25% 85%;
-    --input: 40 25% 88%;
-    --ring: 345 70% 32%;
+    --border: 30 20% 88%;
+    --input: 30 20% 90%;
+    --ring: 340 85% 28%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(345 70% 32%), hsl(345 70% 45%));
-    --gradient-gold: linear-gradient(135deg, hsl(45 75% 52%), hsl(45 85% 65%));
-    --gradient-hero: linear-gradient(135deg, hsl(345 70% 32% / 0.95), hsl(220 70% 40% / 0.9));
-    --gradient-overlay: linear-gradient(180deg, transparent, hsl(345 70% 20% / 0.8));
+    /* Luxurious Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(340 85% 28%), hsl(340 75% 42%), hsl(340 85% 28%));
+    --gradient-rosegold: linear-gradient(135deg, hsl(15 65% 65%), hsl(45 75% 65%), hsl(15 75% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(340 85% 18% / 0.95), hsl(270 60% 35% / 0.9), hsl(340 85% 18% / 0.95));
+    --gradient-overlay: linear-gradient(180deg, transparent, hsl(340 85% 15% / 0.9));
+    --gradient-shimmer: linear-gradient(90deg, transparent, hsl(15 65% 65% / 0.4), transparent);
+    --gradient-radial: radial-gradient(circle at center, hsl(15 65% 65% / 0.2), transparent);
     
-    /* Shadows with cultural elegance */
-    --shadow-elegant: 0 10px 30px -10px hsl(345 70% 32% / 0.3);
-    --shadow-gold: 0 8px 25px -8px hsl(45 75% 52% / 0.4);
-    --shadow-soft: 0 4px 20px -4px hsl(345 20% 45% / 0.15);
+    /* Premium Shadows */
+    --shadow-elegant: 0 20px 60px -15px hsl(340 85% 28% / 0.4);
+    --shadow-rosegold: 0 15px 45px -10px hsl(15 65% 65% / 0.5);
+    --shadow-soft: 0 8px 32px -6px hsl(340 25% 45% / 0.18);
+    --shadow-glow: 0 0 60px hsl(15 65% 65% / 0.6);
+    --shadow-inset: inset 0 2px 8px hsl(340 85% 15% / 0.1);
     
-    /* Animations */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Smooth Animations */
+    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 
     --sidebar-background: 0 0% 98%;
 
@@ -140,15 +153,26 @@
 }
 
 @layer components {
-  /* Ethnic Pattern Background */
+  /* Luxurious Pattern Backgrounds */
   .pattern-bg {
     background-image: 
-      radial-gradient(circle at 20% 50%, hsl(45 75% 52% / 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, hsl(345 70% 32% / 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 20% 50%, hsl(15 65% 65% / 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(340 85% 28% / 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 20%, hsl(270 60% 45% / 0.05) 0%, transparent 50%);
   }
 
   .pattern-mandala {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E6A88F' fill-opacity='0.06'%3E%3Cpath d='M40 40c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 24c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm12-12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-24 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .pattern-silk {
+    background-image: 
+      repeating-linear-gradient(45deg, transparent, transparent 10px, hsl(15 65% 65% / 0.03) 10px, hsl(15 65% 65% / 0.03) 20px),
+      repeating-linear-gradient(-45deg, transparent, transparent 10px, hsl(340 85% 28% / 0.03) 10px, hsl(340 85% 28% / 0.03) 20px);
+  }
+
+  .pattern-paisley {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50c10 0 18-8 18-18s-8-18-18-18c-5 0-9.5 2-13 5.5-3.5-3.5-8-5.5-13-5.5-10 0-18 8-18 18s8 18 18 18c5 0 9.5-2 13-5.5 3.5 3.5 8 5.5 13 5.5z' fill='%23E6A88F' fill-opacity='0.04'/%3E%3C/svg%3E");
   }
 
   /* Animated Elements */
@@ -174,63 +198,191 @@
   }
 
   .hover-glow {
-    transition: all 0.3s ease;
+    transition: var(--transition-smooth);
+    position: relative;
   }
   
-  .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+  .hover-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: var(--gradient-rosegold);
+    opacity: 0;
+    z-index: -1;
+    filter: blur(15px);
+    transition: opacity 0.5s ease;
+  }
+  
+  .hover-glow:hover::after {
+    opacity: 0.6;
   }
 
   .shimmer {
-    background: linear-gradient(90deg, transparent, hsl(45 75% 52% / 0.3), transparent);
-    animation: shimmer 2s infinite;
+    background: var(--gradient-shimmer);
+    animation: shimmer 3s infinite;
+    background-size: 200% 100%;
+  }
+  
+  .shimmer-text {
+    background: var(--gradient-rosegold);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shimmer-text 3s linear infinite;
+  }
+  
+  .glass-effect {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+  
+  .floating {
+    animation: floating 3s ease-in-out infinite;
   }
 
-  /* Premium Button Styles */
+  /* Luxurious Button Styles */
   .btn-hero {
-    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary-glow)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--primary)));
     color: hsl(var(--primary-foreground));
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
+    padding: 1rem 2.5rem;
+    border-radius: 3rem;
     font-weight: 600;
     font-size: 1.125rem;
-    box-shadow: 0 10px 30px -10px hsl(345 70% 32% / 0.3);
-    transition: all 0.3s ease;
+    box-shadow: 0 15px 45px -10px hsl(340 85% 28% / 0.4), 0 0 30px hsl(340 85% 28% / 0.2);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .btn-hero:hover::before {
+    left: 100%;
   }
   
   .btn-hero:hover {
-    box-shadow: 0 8px 25px -8px hsl(45 75% 52% / 0.4);
-    transform: scale(1.05);
+    box-shadow: 0 20px 60px -15px hsl(340 85% 28% / 0.6), 0 0 50px hsl(15 65% 65% / 0.4);
+    transform: translateY(-2px) scale(1.02);
   }
 
-  .btn-gold {
-    background: linear-gradient(to right, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+  .btn-rosegold {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)), hsl(var(--secondary)));
     color: hsl(var(--secondary-foreground));
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
+    padding: 1rem 2.5rem;
+    border-radius: 3rem;
     font-weight: 600;
-    box-shadow: 0 8px 25px -8px hsl(45 75% 52% / 0.4);
-    transition: all 0.3s ease;
+    font-size: 1.125rem;
+    box-shadow: 0 15px 45px -10px hsl(15 65% 65% / 0.5), 0 0 30px hsl(15 65% 65% / 0.3);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
   }
   
-  .btn-gold:hover {
-    box-shadow: 0 10px 30px -10px hsl(345 70% 32% / 0.3);
-    transform: scale(1.05);
+  .btn-rosegold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .btn-rosegold:hover::before {
+    left: 100%;
+  }
+  
+  .btn-rosegold:hover {
+    box-shadow: 0 20px 60px -15px hsl(15 65% 65% / 0.7), 0 0 50px hsl(340 85% 28% / 0.4);
+    transform: translateY(-2px) scale(1.02);
   }
 
-  /* Product Card Styles */
+  .btn-outline-premium {
+    background: transparent;
+    border: 2px solid hsl(var(--primary));
+    color: hsl(var(--primary));
+    padding: 1rem 2.5rem;
+    border-radius: 3rem;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-outline-premium::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+  }
+  
+  .btn-outline-premium:hover::before {
+    width: 300%;
+    height: 300%;
+  }
+  
+  .btn-outline-premium:hover {
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+  }
+  
+  .btn-outline-premium span {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Luxurious Product Card Styles */
   .product-card {
     background: hsl(var(--card));
-    border-radius: 0.75rem;
+    border-radius: 1.5rem;
     overflow: hidden;
-    box-shadow: 0 4px 20px -4px hsl(345 20% 45% / 0.15);
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
     cursor: pointer;
+    border: 1px solid hsl(var(--border));
+    position: relative;
+  }
+  
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-rosegold);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+  }
+  
+  .product-card:hover::before {
+    transform: scaleX(1);
   }
   
   .product-card:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    transform: translateY(-0.75rem);
+    box-shadow: var(--shadow-rosegold);
+    border-color: hsl(var(--secondary) / 0.5);
   }
 
   .product-image-overlay {
@@ -294,9 +446,36 @@
 
 @keyframes shimmer {
   0% {
-    transform: translateX(-100%);
+    background-position: -200% 0;
   }
   100% {
-    transform: translateX(100%);
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shimmer-text {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--secondary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--secondary) / 0.6);
   }
 }
